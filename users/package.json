@@ -1,0 +1,16 @@
+{
+  "name": "cd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cb",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^3.4.2",
+    "mongoose": "^4.11.1",
+    "nodemon": "^1.11.0"
+  }
+}
