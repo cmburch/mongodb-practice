@@ -6,6 +6,10 @@ describe('Creating records', ()=>{
         const joe = new User({
             name: 'Joe'
         });
-        joe.save();
+        joe.save()
+            .then(()=>{
+                //has user bee sucessfully save
+                assert(!joe.isNew);
+            });
     });
 });
