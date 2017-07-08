@@ -7,3 +7,11 @@ mongoose.connection
     .on('error',(error)=>{
         console.warn('Warning',error);
     });
+
+
+    // hook method deletes users from database before any test is run
+    beforeEach((done)=>{
+        mongoose.connection.collections.users.drop();
+            // ready to run next test
+            done();
+    });
