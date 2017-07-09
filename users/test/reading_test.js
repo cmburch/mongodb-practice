@@ -3,16 +3,19 @@ const User = require('../src/user');
 
 describe('read users out of the database', ()=>{
     let joe;
-    it('find all user name joe',()=>{
 
         beforeEach((done)=>{
             joe = new User({
                 name:'Joe'
             });
             joe.save()
-            .then(()=>{
-                done()
-            });
+            .then(()=> done());
         });
-    });
+    it('finds all the users with the name of joe',(done)=>{
+        User.find({name:'Joe'})
+        .then((users)=>{
+            console.log(users);
+            done();
+         });
+     });    
 });
