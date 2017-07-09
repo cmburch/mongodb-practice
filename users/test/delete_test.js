@@ -20,4 +20,22 @@ let joe;
                 done();
             });
     });
+
+    it('User class method remove from database',(done)=>{
+        User.remove({name:'Joe'})
+        .then(()=>{User.findOne({name:'Joe'})
+        .then((user)=>{
+            assert(user === null);
+            done();
+        });
+        });
+    });
+    it('class method findOneAndRemove',(done)=>{
+        User.findOneAndRemove({name:'Joe'})
+        .then(()=>User.findOne({name:'Joe'}))
+        .then((user)=>{
+            assert(user === null);
+            done();
+        });
+    });
 });
