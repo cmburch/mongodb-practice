@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/user_test');
+mongoose.Promise = global.Promise;
 
+mongoose.connect('mongodb://localhost/user_test');
 mongoose.connection
     .once('open',()=> console.log('good to go'))
     .on('error',(error)=>{
