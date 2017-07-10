@@ -12,10 +12,13 @@ before((done)=> {
 });
 
 
-    // hook method deletes users from database before any test is run
-    beforeEach((done)=>{
-        mongoose.connection.collections.users.drop(()=>{
-            // ready to run next test
-            done();
+    beforeEach((done) => {
+    const { users, comments, blogposts} = mongoose.connection.collections;
+    users.drop(()=>{
+        comments.drop(()=>{
+            blogposts.drop(()=>{
+                done();
+            });
         });
     });
+});
