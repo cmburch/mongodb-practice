@@ -13,7 +13,7 @@ let joe;
     });
 //function make all the code more dry
 
-function assertName(operation){
+function assertName(operation,done){
     operation
      .then(()=> User.find({}))
      .then((users)=>{  
@@ -27,7 +27,18 @@ function assertName(operation){
 
     it('instance type using set and save',(done)=>{
         joe.set('name','Alex');
-        assertName(joe.save());
-        done();       
+        assertName(joe.save(),done);
+    });
+    it('A model instance can update',(done)=>{
+        assertName(joe.update({name:'Alex'}),done);
+    });
+    it('A model class can update',(done)=>{
+      assertName(User.update({name:'Joe'},{name:'Alex'}),done);
+    });
+     it('A model class can update one record',(done)=>{
+      assertName(User.findOneAndUpdate({name:'Joe'},{name:'Alex'}),done);
+    });
+    it('A model class can update a record with Id and update',(done)=>{
+      assertName(User.findByIdAndUpdate(joe._id,{name:'Alex'}),done);
     });
 });

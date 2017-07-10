@@ -1,7 +1,7 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-
+//code is not dry this is just for practice
 describe('deleting a user',()=>{
 let joe;
     
