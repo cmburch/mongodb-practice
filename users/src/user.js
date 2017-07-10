@@ -17,7 +17,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.virtual('postCount').get(function(){
-
+    return this.posts.length;
 });
 
 const User = mongoose.model('user',UserSchema);
