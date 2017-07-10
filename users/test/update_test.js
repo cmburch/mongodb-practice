@@ -12,10 +12,12 @@ let joe;
 
     });
     it('instance type using set and save',(done)=>{
-        console.log(joe);
         joe.set('name','Alex');
-        console.log(joe);
-        done();
-    })
-
+        joe.save()
+        .then(()=> User.find({}))
+        .then((users)=>{
+            assert(users[0].name === 'Alex');
+            done();
+        });
+    });
 });
