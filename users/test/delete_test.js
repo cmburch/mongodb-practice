@@ -11,7 +11,7 @@ let joe;
         });
         joe.save()
         .then(()=>done());
-    })
+    });
     it('check if model instance is removed',(done)=>{
         joe.remove()
             .then(()=>User.findOne({name:'Joe'}))
@@ -23,13 +23,13 @@ let joe;
 
     it('User class method remove from database',(done)=>{
         User.remove({name:'Joe'})
-        .then(()=>{User.findOne({name:'Joe'})
-        .then((user)=>{
-            assert(user === null);
-            done();
-        });
-        });
+          .then(()=>User.findOne({name:'Joe'}))
+            .then((user)=>{
+                assert(user === null);
+                done();
+            });
     });
+
     it('class method findOneAndRemove',(done)=>{
         User.findOneAndRemove({name:'Joe'})
         .then(()=>User.findOne({name:'Joe'}))
